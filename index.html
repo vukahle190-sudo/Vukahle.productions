@@ -5,73 +5,333 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vukahle Productions</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b0b12;color:white;font-family:Arial,sans-serif}
-header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292936}
-.logo{font-weight:bold;color:#baff65}
-nav a{color:white;text-decoration:none;margin-left:15px;font-size:14px}
-.hero{padding:100px 7%;min-height:75vh;background:radial-gradient(ellipse at 80% 20%,#39245e,transparent 55%)}
-.tag{color:#baff65;letter-spacing:4px;font-size:12px}
-h1{font-size:clamp(44px,9vw,82px);line-height:1.02;margin:25px 0}
-h1 span{color:#baff65}
-p{color:#c3c2d0;line-height:1.8}
-.btn{display:inline-block;background:#baff65;color:#111;padding:15px 22px;border-radius:30px;text-decoration:none;font-weight:bold;margin-top:15px}
-section{padding:65px 7%}
-h2{font-size:35px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
-.card{background:#171721;border:1px solid #30303e;border-radius:16px;padding:25px}
-.card h3{color:#baff65}
-.about{background:#13131d}
-footer{text-align:center;padding:30px;color:#aaa;border-top:1px solid #292936}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b0b12;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 22px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #292936;
+}
+
+.logo {
+  font-weight: bold;
+  color: #baff65;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.tag {
+  color: #baff65;
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+
+.hero {
+  padding: 100px 7%;
+  min-height: 75vh;
+  background:
+    radial-gradient(ellipse at 80% 20%, #39245e, transparent 55%);
+}
+
+h1 {
+  font-size: clamp(44px, 9vw, 82px);
+  line-height: 1.02;
+  margin: 25px 0;
+}
+
+h1 span {
+  color: #baff65;
+}
+
+p {
+  color: #c3c2d0;
+  line-height: 1.8;
+}
+
+.btn {
+  display: inline-block;
+  background: #baff65;
+  color: #111;
+  padding: 15px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+}
+
+section {
+  padding: 65px 7%;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: #171721;
+  border: 1px solid #30303e;
+  border-radius: 16px;
+  padding: 25px;
+  overflow-wrap: anywhere;
+}
+
+.card h3 {
+  color: #baff65;
+}
+
+.about {
+  background: #13131d;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #aaa;
+  border-top: 1px solid #292936;
+}
+
+/* WELCOME POP-UP */
+#welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at 50% 15%, #39245e, transparent 55%),
+    linear-gradient(145deg, #080b18, #171b38, #42215e);
+  color: white;
+  text-align: center;
+}
+
+#welcome-screen .photo-placeholder {
+  width: min(72vw, 280px);
+  height: min(72vw, 280px);
+  border: 3px solid white;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  background: #292447;
+  color: #baff65;
+  font-size: 100px;
+  font-weight: bold;
+  box-shadow: 0 8px 35px #0008;
+}
+
+#welcome-screen h2 {
+  font-size: clamp(27px, 7vw, 38px);
+  margin: 0 0 12px;
+}
+
+#welcome-screen p {
+  margin: 0 0 25px;
+}
+
+#welcome-screen .continue-btn {
+  border: 0;
+  border-radius: 30px;
+  padding: 16px 42px;
+  background: #baff65;
+  color: #111;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#welcome-screen .continue-btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 18px 5%;
+  }
+
+  nav a {
+    margin-left: 8px;
+  }
+
+  .hero {
+    padding: 75px 7%;
+  }
+}
 </style>
 </head>
+
 <body>
+
+<!-- WELCOME SCREEN -->
+<div id="welcome-screen">
+  <!-- Replace the V with your photo when it is available -->
+  <div class="photo-placeholder" aria-label="Photo placeholder">
+    V
+  </div>
+
+  <h2>Vukahle Productions</h2>
+  <p>Welcome to my world. Explore and enjoy!</p>
+
+  <button
+    class="continue-btn"
+    type="button"
+    onclick="document.getElementById('welcome-screen').remove()">
+    CONTINUE
+  </button>
+</div>
+
+<!-- EXISTING HOMEPAGE -->
 <header>
-<div class="logo">VUKAHLE.PRODUCTIONS</div>
-<nav><a href="#about">About</a><a href="#services">Services</a></nav>
+  <div class="logo">VUKAHLE.PRODUCTIONS</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+  </nav>
 </header>
+
 <div class="hero">
-<div class="tag">CREATIVITY • VISION • EXCELLENCE</div>
-<h1>Ideas made<br><span>unforgettable.</span></h1>
-<p>Welcome to Vukahle Productions — a place for bold ideas, creative projects and new possibilities.</p>
-<a class="btn" href="#contact">Let's Connect ↗</a>
+  <div class="tag">CREATIVITY VISION EXCELLENCE</div>
+
+  <h1>Ideas made<br><span>unforgettable.</span></h1>
+
+  <p>
+    Welcome to Vukahle Productions, a place for bold ideas,
+    creative projects and new possibilities.
+  </p>
+
+  <a class="btn" href="#contact">Let's Connect</a>
 </div>
+
 <section id="services">
-<div class="tag">WHAT WE DO</div>
-<h2>Creativity without limits.</h2>
-<div class="cards">
-<div class="card"><h3>01. Creative Ideas</h3><p>Turning imagination into exciting new concepts and projects.</p></div>
-<div class="card"><h3>02. Digital Content</h3><p>Creating a strong and memorable presence in the digital world.</p></div>
-<div class="card"><h3>03. Visual Design</h3><p>Building bold visuals and unique identities for brands.</p></div>
-</div>
-</section>
-<section class="about" id="about">
-<div class="tag">ABOUT US</div>
-<h2>Think big. Create boldly.</h2>
-<p>Vukahle Productions is built on ambition, creativity and the power of ideas. We believe every great project starts with a vision.</p>
-</section><section id="apps">
-  <div class="tag">MY APPS</div>
-  <h2>Explore My Apps</h2>
-  <p>Discover and play games created by Vukahle Productions.</p>
-  <div class="card">
-    <h3>🎮 VUKAHLE QUIZZES</h3>
-    <p>Learn. Play. Compete.</p>
-    <a class="btn" href="https://vukahle-quizzes-8pmi1i.v2.appdeploy.ai/" target="_blank" rel="noopener noreferrer">View & Play ↗</a>
+  <div class="tag">WHAT WE DO</div>
+  <h2>Creativity without limits.</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>01. Creative Ideas</h3>
+      <p>Turning imagination into exciting new concepts and projects.</p>
+    </div>
+
+    <div class="card">
+      <h3>02. Digital Content</h3>
+      <p>Creating a strong and memorable presence in the digital world.</p>
+    </div>
+
+    <div class="card">
+      <h3>03. Visual Design</h3>
+      <p>Building bold visuals and unique identities for brands.</p>
+    </div>
   </div>
 </section>
- <section id="contact">
-  <div class="tag">GET IN TOUCH</div>
-  <h2>Have an idea?</h2>
-  <p>Let's connect on WhatsApp or TikTok.</p>
-  <a class="btn" href="https://wa.me/27753697272" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-  <a class="btn" href="https://www.tiktok.com/@funny_boy084" target="_blank" rel="noopener noreferrer" style="margin-left:10px">TikTok ↗</a>
- </section>
-  
-<section id="vukahle-ai" class="about">
-  <div class="tag">MEET YOUR AI ASSISTANT</div>
-  <h2>🤖 VUKAHLE AI</h2>
-  <p>Your personal AI assistant, created by Vukahle Matjeke. Ask questions, explore ideas, and get help with everyday tasks.</p>
-  <a class="btn" href="https://vukahle-ai-qolfvq.v2.appdeploy.ai/" target="_blank" rel="noopener noreferrer">Chat with VUKAHLE AI ↗</a>
+
+<section class="about" id="about">
+  <div class="tag">ABOUT US</div>
+  <h2>Think big. Create boldly.</h2>
+
+  <p>
+    Vukahle Productions is built on ambition, creativity and the
+    power of ideas. We believe every great project starts with a vision.
+  </p>
 </section>
 
+<section id="apps">
+  <div class="tag">MY APPS</div>
+  <h2>Explore My Apps</h2>
+
+  <p>Discover and play games created by Vukahle Productions.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>VUKAHLE QUIZZES</h3>
+      <p>Learn. Play. Compete.</p>
+
+      <a
+        class="btn"
+        href="https://vukahle-quizzes-8pmi1i.v2.appdeploy.ai/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Play Quizzes
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="tag">GET IN TOUCH</div>
+  <h2>Have an idea?</h2>
+
+  <p>Let's connect on WhatsApp or TikTok.</p>
+
+  <a
+    class="btn"
+    href="https://wa.me/27753697272"
+    target="_blank"
+    rel="noopener noreferrer">
+    WhatsApp
+  </a>
+
+  <a
+    class="btn"
+    href="https://www.tiktok.com/@funny_boy084"
+    target="_blank"
+    rel="noopener noreferrer">
+    TikTok
+  </a>
+</section>
+
+<section class="about" id="vukahle-ai">
+  <div class="tag">MEET YOUR AI ASSISTANT</div>
+  <h2>VUKAHLE AI</h2>
+
+  <p>
+    Your personal AI assistant. Ask questions, explore ideas,
+    and get help with everyday tasks.
+  </p>
+
+  <a
+    class="btn"
+    href="https://vukahle-ai-qolfvq.v2.appdeploy.ai/"
+    target="_blank"
+    rel="noopener noreferrer">
+    Open Vukahle AI
+  </a>
+</section>
+
+<footer>
+  © Vukahle Productions
+</footer>
+
+</body>
+</html>
