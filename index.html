@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: #0b0b12;
@@ -36,21 +40,24 @@ header {
 nav a {
   color: white;
   text-decoration: none;
-  margin-left: 15px;
+  margin-left: 12px;
   font-size: 14px;
 }
 
 .tag {
   color: #baff65;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   font-size: 12px;
 }
 
 .hero {
-  padding: 100px 7%;
-  min-height: 75vh;
-  background:
-    radial-gradient(ellipse at 80% 20%, #39245e, transparent 55%);
+  padding: 90px 7%;
+  min-height: 70vh;
+  background: radial-gradient(
+    ellipse at 80% 20%,
+    #39245e,
+    transparent 55%
+  );
 }
 
 h1 {
@@ -63,6 +70,10 @@ h1 span {
   color: #baff65;
 }
 
+h2 {
+  font-size: 32px;
+}
+
 p {
   color: #c3c2d0;
   line-height: 1.8;
@@ -72,25 +83,25 @@ p {
   display: inline-block;
   background: #baff65;
   color: #111;
-  padding: 15px 22px;
+  padding: 14px 20px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
-  border: 0;
+  margin: 5px 4px 5px 0;
   cursor: pointer;
+  border: none;
 }
 
 section {
-  padding: 65px 7%;
-}
-
-h2 {
-  font-size: 35px;
+  padding: 55px 7%;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(210px, 1fr)
+  );
   gap: 18px;
 }
 
@@ -98,7 +109,7 @@ h2 {
   background: #171721;
   border: 1px solid #30303e;
   border-radius: 16px;
-  padding: 25px;
+  padding: 22px;
   overflow-wrap: anywhere;
 }
 
@@ -117,7 +128,64 @@ footer {
   border-top: 1px solid #292936;
 }
 
-/* WELCOME POP-UP */
+.course-label {
+  display: inline-block;
+  color: #baff65;
+  border: 1px solid #baff6555;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.video-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #050507;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  );
+  gap: 12px;
+}
+
+.episode-btn {
+  display: block;
+  background: #232333;
+  color: white;
+  border: 1px solid #45455a;
+  padding: 15px;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.episode-btn:hover {
+  border-color: #baff65;
+}
+
+.note {
+  color: #aaa;
+  font-size: 13px;
+}
+
 #welcome-screen {
   position: fixed;
   inset: 0;
@@ -129,51 +197,48 @@ footer {
   padding: 24px;
   overflow-y: auto;
   background:
-    radial-gradient(ellipse at 50% 15%, #39245e, transparent 55%),
-    linear-gradient(145deg, #080b18, #171b38, #42215e);
-  color: white;
+    radial-gradient(
+      ellipse at 50% 15%,
+      #39245e,
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #080b18,
+      #171b38,
+      #42215e
+    );
   text-align: center;
 }
 
 #welcome-screen .photo-placeholder {
-  width: min(72vw, 280px);
-  height: min(72vw, 280px);
+  width: min(72vw, 250px);
+  height: min(72vw, 250px);
   border: 3px solid white;
   border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   background: #292447;
   color: #baff65;
-  font-size: 100px;
+  font-size: 90px;
   font-weight: bold;
   box-shadow: 0 8px 35px #0008;
 }
 
 #welcome-screen h2 {
-  font-size: clamp(27px, 7vw, 38px);
   margin: 0 0 12px;
 }
 
-#welcome-screen p {
-  margin: 0 0 25px;
-}
-
-#welcome-screen .continue-btn {
+#welcome-screen button {
   border: 0;
   border-radius: 30px;
-  padding: 16px 42px;
+  padding: 15px 35px;
   background: #baff65;
   color: #111;
-  font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-}
-
-#welcome-screen .continue-btn:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 4px;
 }
 
 @media (max-width: 480px) {
@@ -182,11 +247,15 @@ footer {
   }
 
   nav a {
-    margin-left: 8px;
+    margin-left: 7px;
   }
 
   .hero {
-    padding: 75px 7%;
+    padding: 65px 7%;
+  }
+
+  section {
+    padding: 45px 6%;
   }
 }
 </style>
@@ -196,35 +265,38 @@ footer {
 
 <!-- WELCOME SCREEN -->
 <div id="welcome-screen">
-  <!-- Replace the V with your photo when it is available -->
-  <div class="photo-placeholder" aria-label="Photo placeholder">
-    V
-  </div>
+  <div class="photo-placeholder">V</div>
 
   <h2>Vukahle Productions</h2>
+
   <p>Welcome to my world. Explore and enjoy!</p>
 
   <button
-    class="continue-btn"
     type="button"
     onclick="document.getElementById('welcome-screen').remove()">
     CONTINUE
   </button>
 </div>
 
-<!-- EXISTING HOMEPAGE -->
+<!-- WEBSITE HEADER -->
 <header>
   <div class="logo">VUKAHLE.PRODUCTIONS</div>
+
   <nav>
     <a href="#about">About</a>
     <a href="#services">Services</a>
+    <a href="#grade-7">Grade 7</a>
   </nav>
 </header>
 
+<!-- HOMEPAGE -->
 <div class="hero">
-  <div class="tag">CREATIVITY VISION EXCELLENCE</div>
+  <div class="tag">CREATIVITY • VISION • EXCELLENCE</div>
 
-  <h1>Ideas made<br><span>unforgettable.</span></h1>
+  <h1>
+    Ideas made<br>
+    <span>unforgettable.</span>
+  </h1>
 
   <p>
     Welcome to Vukahle Productions, a place for bold ideas,
@@ -232,49 +304,212 @@ footer {
   </p>
 
   <a class="btn" href="#contact">Let's Connect</a>
+
+  <a class="btn" href="#grade-7">Explore Grade 7</a>
 </div>
 
+<!-- SERVICES -->
 <section id="services">
   <div class="tag">WHAT WE DO</div>
+
   <h2>Creativity without limits.</h2>
 
   <div class="cards">
     <div class="card">
-      <h3>01. Creative Ideas</h3>
-      <p>Turning imagination into exciting new concepts and projects.</p>
+      <h3>Creative Ideas</h3>
+      <p>
+        Turning imagination into exciting new concepts
+        and projects.
+      </p>
     </div>
 
     <div class="card">
-      <h3>02. Digital Content</h3>
-      <p>Creating a strong and memorable presence in the digital world.</p>
+      <h3>Digital Content</h3>
+      <p>
+        Creating a strong and memorable presence
+        in the digital world.
+      </p>
     </div>
 
     <div class="card">
-      <h3>03. Visual Design</h3>
-      <p>Building bold visuals and unique identities for brands.</p>
+      <h3>Visual Design</h3>
+      <p>
+        Building bold visuals and unique identities.
+      </p>
     </div>
   </div>
 </section>
 
-<section class="about" id="about">
+<!-- ABOUT -->
+<section id="about" class="about">
   <div class="tag">ABOUT US</div>
+
   <h2>Think big. Create boldly.</h2>
 
   <p>
-    Vukahle Productions is built on ambition, creativity and the
-    power of ideas. We believe every great project starts with a vision.
+    Vukahle Productions is built on ambition,
+    creativity and the power of ideas.
+    Every great project starts with a vision.
   </p>
 </section>
 
+<!-- GRADE 7 COURSES -->
+<section id="grade-7">
+  <div class="tag">LEARN SOMETHING NEW</div>
+
+  <h2>Grade 7 Courses</h2>
+
+  <p>
+    Choose a subject to explore its lessons.
+    Mathematics videos are available now.
+    More lessons will be added soon.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <span class="course-label">LESSONS AVAILABLE</span>
+      <h3>📐 Mathematics</h3>
+      <p>Watch the Grade 7 Mathematics episodes.</p>
+      <a class="btn" href="#math-lessons">
+        Open Mathematics
+      </a>
+    </div>
+
+    <div class="card">
+      <span class="course-label">COMING SOON</span>
+      <h3>🔬 Natural Sciences (NS)</h3>
+      <p>Grade 7 Natural Sciences lessons.</p>
+    </div>
+
+    <div class="card">
+      <span class="course-label">COMING SOON</span>
+      <h3>🌍 Social Sciences</h3>
+      <p>Grade 7 Social Sciences lessons.</p>
+    </div>
+
+    <div class="card">
+      <span class="course-label">COMING SOON</span>
+      <h3>💼 Economic and Management Sciences (EMS)</h3>
+      <p>Grade 7 EMS lessons.</p>
+    </div>
+
+    <div class="card">
+      <span class="course-label">COMING SOON</span>
+      <h3>🛠️ Technology</h3>
+      <p>Grade 7 Technology lessons.</p>
+    </div>
+
+    <div class="card">
+      <span class="course-label">COMING SOON</span>
+      <h3>🎨 Creative Arts</h3>
+      <p>Grade 7 Creative Arts lessons.</p>
+    </div>
+
+    <div class="card">
+      <span class="course-label">COMING SOON</span>
+      <h3>🌱 Life Orientation</h3>
+      <p>Grade 7 Life Orientation lessons.</p>
+    </div>
+
+    <div class="card">
+      <span class="course-label">COMING SOON</span>
+      <h3>🗣️ XiTsonga (Tsonga) Course</h3>
+      <p>Learn XiTsonga with lessons coming soon.</p>
+    </div>
+
+  </div>
+
+  <!-- MATHEMATICS VIDEO LESSONS -->
+  <div id="math-lessons" style="margin-top:45px">
+
+    <div class="tag">GRADE 7 • MATHEMATICS</div>
+
+    <h2>Mathematics Episodes</h2>
+
+    <p>
+      Select an episode below. Episode 1 is embedded
+      on this page. TikTok episodes open using their
+      original links.
+    </p>
+
+    <div id="lesson-player">
+
+      <h3 id="lesson-title" style="color:#baff65">
+        Episode 1 — Mathematics
+      </h3>
+
+      <div class="video-wrap">
+        <iframe
+          id="math-video"
+          src="https://www.youtube-nocookie.com/embed/kXURUBiUZoo"
+          title="Grade 7 Mathematics Episode 1"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="note">
+        If the video cannot play here, its creator may
+        have disabled embedding.
+      </p>
+
+      <a
+        id="open-original"
+        class="btn"
+        href="https://youtube.com/shorts/kXURUBiUZoo?si=mYeJr20e4r1eF6SI"
+        target="_blank"
+        rel="noopener noreferrer">
+        Open video on YouTube
+      </a>
+
+    </div>
+
+    <div class="episode-list">
+
+      <button
+        class="episode-btn"
+        type="button"
+        onclick="showYouTube()">
+        ▶ Episode 1 — YouTube Mathematics
+      </button>
+
+      <a
+        class="episode-btn"
+        href="https://vt.tiktok.com/ZSg4a1j1f/"
+        target="_blank"
+        rel="noopener noreferrer">
+        ▶ Episode 2 — TikTok Mathematics ↗
+      </a>
+
+      <a
+        class="episode-btn"
+        href="https://vt.tiktok.com/ZSg45E2UB/"
+        target="_blank"
+        rel="noopener noreferrer">
+        ▶ Episode 3 — TikTok Mathematics ↗
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- VUKAHLE QUIZZES -->
 <section id="apps">
   <div class="tag">MY APPS</div>
+
   <h2>Explore My Apps</h2>
 
-  <p>Discover and play games created by Vukahle Productions.</p>
+  <p>
+    Discover and play games created by Vukahle Productions.
+  </p>
 
   <div class="cards">
     <div class="card">
       <h3>VUKAHLE QUIZZES</h3>
+
       <p>Learn. Play. Compete.</p>
 
       <a
@@ -288,8 +523,10 @@ footer {
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="tag">GET IN TOUCH</div>
+
   <h2>Have an idea?</h2>
 
   <p>Let's connect on WhatsApp or TikTok.</p>
@@ -311,13 +548,15 @@ footer {
   </a>
 </section>
 
+<!-- VUKAHLE AI -->
 <section class="about" id="vukahle-ai">
   <div class="tag">MEET YOUR AI ASSISTANT</div>
+
   <h2>VUKAHLE AI</h2>
 
   <p>
-    Your personal AI assistant. Ask questions, explore ideas,
-    and get help with everyday tasks.
+    Your personal AI assistant. Ask questions,
+    explore ideas and get help with everyday tasks.
   </p>
 
   <a
@@ -332,6 +571,27 @@ footer {
 <footer>
   © Vukahle Productions
 </footer>
+
+<script>
+function showYouTube() {
+  document.getElementById("lesson-title").textContent =
+    "Episode 1 — Mathematics";
+
+  document.getElementById("math-video").src =
+    "https://www.youtube-nocookie.com/embed/kXURUBiUZoo";
+
+  document.getElementById("open-original").href =
+    "https://youtube.com/shorts/kXURUBiUZoo?si=mYeJr20e4r1eF6SI";
+
+  document.getElementById("open-original").textContent =
+    "Open video on YouTube";
+
+  document.getElementById("lesson-player").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+</script>
 
 </body>
 </html>
